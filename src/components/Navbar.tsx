@@ -29,9 +29,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              HsTrips
-            </h1>
+            <div className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-lg">HS</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold text-foreground leading-tight">HS Trips</span>
+                <span className="text-xs text-muted-foreground leading-tight">Travel & Tours</span>
+              </div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
