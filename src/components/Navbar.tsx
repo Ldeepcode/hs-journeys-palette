@@ -35,7 +35,6 @@ const Navbar = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-foreground leading-tight">HS Trips</span>
-                <span className="text-xs text-muted-foreground leading-tight">Travel & Tours</span>
               </div>
             </div>
           </div>
