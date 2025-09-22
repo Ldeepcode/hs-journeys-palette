@@ -121,17 +121,18 @@ const Destinations = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-stretch">
                   <Button 
                     onClick={scrollToForm}
                     variant="cta" 
-                    className="flex-1"
+                    className="flex-1 h-10"
                   >
                     Plan Trip
                   </Button>
                   <Button 
                     variant="outline" 
                     size="default"
+                    className="h-10 px-4"
                     onClick={scrollToForm}
                   >
                     Learn More

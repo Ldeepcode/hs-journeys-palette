@@ -30,7 +30,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-lg border-2 border-white">
                 <span className="text-white font-bold text-lg">HS</span>
               </div>
               <div className="flex flex-col">
