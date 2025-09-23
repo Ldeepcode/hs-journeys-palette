@@ -59,13 +59,13 @@ const Hero = () => {
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
           Discover
-          <span className="bg-gradient-cta bg-clip-text text-transparent"> India</span>
+          <span className="bg-gradient-cta bg-clip-text text-transparent"> India & Beyond</span>
           <br />
-          with HsTrips
+          with HS Trips
         </h1>
         
         <p className="text-xl md:text-2xl mb-4 text-gray-100 max-w-2xl mx-auto">
-          Your trusted partner for unforgettable journeys across incredible India
+          Your trusted partner for unforgettable journeys across Incredible India and worldwide destinations
         </p>
 
         <div className="mb-8">

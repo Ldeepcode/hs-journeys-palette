@@ -4,22 +4,28 @@ import { Plane, Hotel, Package, Users } from "lucide-react";
 
 const services = [
   {
-    icon: Package,
-    title: "Holiday Packages",
-    description: "Curated travel experiences across India's most beautiful destinations. From hill stations to beaches, we craft perfect itineraries.",
-    features: ["Custom Itineraries", "All-Inclusive Packages", "Expert Local Guides", "Flexible Booking"]
-  },
-  {
     icon: Plane,
-    title: "Flight Bookings",
-    description: "Best deals on domestic and international flights. Compare prices and book with confidence for your perfect travel dates.",
+    title: "Domestic & International Flight Bookings",
+    description: "Best deals on flights worldwide. Compare prices and book with confidence for your perfect travel dates.",
     features: ["Competitive Prices", "Instant Confirmation", "24/7 Support", "Easy Cancellation"]
   },
   {
+    icon: Package,
+    title: "Customized Holiday Packages",
+    description: "Curated travel experiences across incredible destinations worldwide. From adventure to luxury, we craft perfect itineraries.",
+    features: ["India & Worldwide", "Custom Itineraries", "All-Inclusive Packages", "Expert Local Guides"]
+  },
+  {
+    icon: Users,
+    title: "Corporate & Group Travel Solutions",
+    description: "Comprehensive travel management for businesses and groups. Seamless planning for corporate events and group adventures.",
+    features: ["Group Bookings", "Corporate Rates", "Event Planning", "24/7 Support"]
+  },
+  {
     icon: Hotel,
-    title: "Hotel Bookings", 
-    description: "From luxury resorts to budget stays, find accommodations that match your style and budget across India.",
-    features: ["Verified Properties", "Best Price Guarantee", "Free Cancellation", "Customer Reviews"]
+    title: "Honeymoon & Luxury Escapes", 
+    description: "Romantic getaways and luxury experiences crafted for special moments. Create unforgettable memories worldwide.",
+    features: ["Luxury Resorts", "Romantic Packages", "Personalized Service", "Special Occasions"]
   }
 ];
 
@@ -36,12 +42,16 @@ const Services = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Our <span className="bg-gradient-cta bg-clip-text text-transparent">Services</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive travel solutions designed to make your Indian adventure seamless and memorable
-          </p>
+          <div className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="mb-4">✔️ Domestic & International Flight Bookings</p>
+            <p className="mb-4">✔️ Customized Holiday Packages (India & Worldwide)</p>
+            <p className="mb-4">✔️ Corporate & Group Travel Solutions</p>
+            <p className="mb-4">✔️ Honeymoon & Luxury Escapes</p>
+            <p>✔️ Visa Assistance & Travel Insurance</p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (

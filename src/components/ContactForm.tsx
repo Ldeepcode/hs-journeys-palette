@@ -80,10 +80,8 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // In a real application, you would send this to your backend API
-      // For now, we'll simulate the email sending
-      const emailBody = `
-New Travel Inquiry from HsTrips Website
+      // Create mailto link for basic email functionality
+      const emailBody = `New Travel Inquiry from HS Trips Website
 
 Enquiry Type: ${formData.enquiryType}
 Name: ${formData.name}
@@ -92,15 +90,15 @@ Email: ${formData.email}
 Address: ${formData.address || 'Not provided'}
 Message: ${formData.message || 'No additional message'}
 
-Please respond to this inquiry as soon as possible.
-      `;
+Please respond to this inquiry as soon as possible.`;
 
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const mailtoLink = `mailto:hstravels.headoffice@gmail.com?subject=Travel Inquiry from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
       
-      // In production, replace this with actual email sending logic
-      console.log('Form submitted:', formData);
-      console.log('Email body:', emailBody);
+      // Open email client
+      window.open(mailtoLink, '_blank');
+      
+      // Simulate API call delay for user feedback
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       toast({
         title: "Inquiry Submitted Successfully!",

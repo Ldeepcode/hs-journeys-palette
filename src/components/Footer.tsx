@@ -12,8 +12,8 @@ const Footer = () => {
               HsTrips
             </h3>
             <p className="text-gray-300 leading-relaxed mb-6">
-              Your trusted travel partner for incredible India experiences. 
-              From Himalayas to backwaters, we craft memories that last a lifetime.
+              Your trusted travel partner for incredible experiences worldwide. 
+              From exotic destinations to amazing adventures, we craft memories that last a lifetime.
             </p>
             
             <div className="flex space-x-3">
@@ -99,33 +99,33 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Popular Destinations */}
+          {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-semibold mb-4 text-primary">Top Destinations</h4>
+            <h4 className="text-xl font-semibold mb-4 text-primary">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#destinations" className="text-gray-300 hover:text-primary transition-colors">
-                  Manali & Himachal
+                  Popular Destinations
                 </a>
               </li>
               <li>
-                <a href="#destinations" className="text-gray-300 hover:text-primary transition-colors">
-                  Leh Ladakh
+                <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
+                  Our Services
                 </a>
               </li>
               <li>
-                <a href="#destinations" className="text-gray-300 hover:text-primary transition-colors">
-                  Kashmir Valley
+                <a href="#about" className="text-gray-300 hover:text-primary transition-colors">
+                  About Us
                 </a>
               </li>
               <li>
-                <a href="#destinations" className="text-gray-300 hover:text-primary transition-colors">
-                  Kerala Backwaters
+                <a href="#testimonials" className="text-gray-300 hover:text-primary transition-colors">
+                  Testimonials
                 </a>
               </li>
               <li>
-                <a href="#destinations" className="text-gray-300 hover:text-primary transition-colors">
-                  Rajasthan Royal
+                <a href="#contact" className="text-gray-300 hover:text-primary transition-colors">
+                  Contact Us
                 </a>
               </li>
             </ul>
@@ -159,9 +159,9 @@ const Footer = () => {
 
               <div className="flex items-start">
                 <MapPin size={16} className="mr-3 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300 text-sm">
-                  Serving travelers across India
-                </span>
+              <span className="text-gray-300 text-sm">
+                Serving travelers worldwide
+              </span>
               </div>
             </div>
 
@@ -185,7 +185,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © 2024 HsTrips. All rights reserved. Creating memories across incredible India.
+              © 2024 HsTrips. All rights reserved. Creating memories across incredible destinations worldwide.
             </div>
             
             <div className="flex space-x-6 text-sm">

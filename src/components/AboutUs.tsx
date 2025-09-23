@@ -19,29 +19,28 @@ const AboutUs = () => {
             </h2>
             
             <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-              Born from a passion for showcasing India's incredible diversity, HsTrips has been crafting 
-              unforgettable journeys across the subcontinent since our inception. We believe every traveler 
-              deserves to experience the real India - from the snow-capped Himalayas to the tropical backwaters 
-              of Kerala.
+              Born from a passion for creating incredible travel experiences, HsTrips has been crafting 
+              unforgettable journeys worldwide since our inception. We believe every traveler 
+              deserves to experience authentic destinations - from exotic international locations to incredible domestic gems.
             </p>
             
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               Our deep local knowledge, transparent approach, and commitment to personalized service has helped 
-              over 1000+ travelers discover the magic of India. Whether you're seeking adventure in Ladakh, 
-              romance in Udaipur, or spiritual awakening in Varanasi, we're here to make it happen.
+              over 500+ travelers discover amazing destinations worldwide. Whether you're seeking adventure, 
+              romance, or cultural experiences, we're here to make it happen.
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">1000+</div>
-                <div className="text-gray-600 text-sm">Happy Travelers</div>
+                <div className="text-3xl font-bold text-primary mb-1">500+</div>
+                <div className="text-gray-600 text-sm">Happy Customers</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary mb-1">50+</div>
                 <div className="text-gray-600 text-sm">Destinations Covered</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">5+</div>
+                <div className="text-3xl font-bold text-primary mb-1">2+</div>
                 <div className="text-gray-600 text-sm">Years Experience</div>
               </div>
               <div className="text-center">
@@ -72,7 +71,7 @@ const AboutUs = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Passion for Travel</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      We live and breathe travel. Our team's genuine love for India's destinations 
+                      We live and breathe travel. Our team's genuine love for amazing destinations worldwide 
                       shows in every itinerary we create.
                     </p>
                   </div>
@@ -118,7 +117,7 @@ const AboutUs = () => {
                     <h4 className="font-semibold text-gray-900 mb-2">Local Expertise</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       Our deep local connections and insider knowledge ensure you experience 
-                      the authentic India beyond the tourist trails.
+                      authentic destinations beyond the typical tourist trails.
                     </p>
                   </div>
                 </CardContent>
