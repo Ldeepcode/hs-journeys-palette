@@ -208,7 +208,7 @@ const Destinations = () => {
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {domesticDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-3/5">
                     <DestinationCard destination={destination} />
                   </CarouselItem>
                 ))}
@@ -228,7 +228,7 @@ const Destinations = () => {
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {internationalDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-3/5">
                     <DestinationCard destination={destination} />
                   </CarouselItem>
                 ))}

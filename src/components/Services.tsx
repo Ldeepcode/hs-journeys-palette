@@ -42,13 +42,6 @@ const Services = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Our <span className="bg-gradient-cta bg-clip-text text-transparent">Services</span>
           </h2>
-          <div className="text-xl text-gray-600 max-w-3xl mx-auto">
-            <p className="mb-4">✔️ Domestic & International Flight Bookings</p>
-            <p className="mb-4">✔️ Customized Holiday Packages (India & Worldwide)</p>
-            <p className="mb-4">✔️ Corporate & Group Travel Solutions</p>
-            <p className="mb-4">✔️ Honeymoon & Luxury Escapes</p>
-            <p>✔️ Visa Assistance & Travel Insurance</p>
-          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -67,11 +60,8 @@ const Services = () => {
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-2 mb-6">
+                <CardContent className="text-center flex flex-col h-full">
+                  <ul className="space-y-2 mb-6 flex-grow">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="text-sm text-gray-500 flex items-center justify-center">
                         <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
@@ -82,7 +72,7 @@ const Services = () => {
                   <Button 
                     onClick={scrollToForm}
                     variant="outline" 
-                    className="w-full"
+                    className="w-full mt-auto"
                   >
                     Get Quote
                   </Button>
