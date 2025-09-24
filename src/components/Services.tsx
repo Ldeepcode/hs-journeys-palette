@@ -30,10 +30,6 @@ const services = [
 ];
 
 const Services = () => {
-  const scrollToForm = () => {
-    const formElement = document.getElementById('contact-form');
-    formElement?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section className="pt-20 pb-10 px-4 bg-gradient-to-b from-white to-gray-50">
@@ -61,7 +57,7 @@ const Services = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center flex flex-col justify-between p-6 h-full">
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="text-sm text-gray-500 flex items-center justify-center">
                         <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
@@ -69,13 +65,6 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button 
-                    onClick={scrollToForm}
-                    variant="outline" 
-                    className="w-full"
-                  >
-                    Get Quote
-                  </Button>
                 </CardContent>
               </Card>
             );
