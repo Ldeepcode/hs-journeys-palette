@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-16 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Brand Section */}
           <div>
             <h3 className="text-3xl font-bold mb-4 bg-gradient-cta bg-clip-text text-transparent">
@@ -65,70 +65,6 @@ const Footer = () => {
                 </a>
               </Button>
             </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-xl font-semibold mb-4 text-primary">Our Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                  Holiday Packages
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                  Flight Bookings
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                  Hotel Reservations
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                  Corporate Travel
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                  Group Bookings
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-xl font-semibold mb-4 text-primary">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#destinations" className="text-gray-300 hover:text-primary transition-colors">
-                  Popular Destinations
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                  Our Services
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-gray-300 hover:text-primary transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="text-gray-300 hover:text-primary transition-colors">
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-300 hover:text-primary transition-colors">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
           </div>
 
           {/* Contact Info */}

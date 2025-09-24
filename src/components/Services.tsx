@@ -36,7 +36,7 @@ const Services = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
+    <section className="pt-20 pb-10 px-4 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -60,7 +60,7 @@ const Services = () => {
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-center flex flex-col justify-between p-6 h-full min-h-[280px]">
+                <CardContent className="text-center flex flex-col justify-between p-6 h-full">
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="text-sm text-gray-500 flex items-center justify-center">
