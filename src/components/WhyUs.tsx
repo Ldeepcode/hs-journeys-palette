@@ -61,27 +61,6 @@ const WhyUs = () => {
           })}
         </div>
 
-        {/* Trust Indicators */}
-        <div className="mt-16 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div>
-              <div className="text-3xl font-bold text-primary mb-2">1000+</div>
-              <div className="text-gray-600">Happy Travelers</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-2">50+</div>
-              <div className="text-gray-600">Destinations</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-2">5+</div>
-              <div className="text-gray-600">Years Experience</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-gray-600">Support</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

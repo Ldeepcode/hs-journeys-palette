@@ -60,8 +60,8 @@ const Services = () => {
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-center flex flex-col h-full">
-                  <ul className="space-y-2 mb-6 flex-grow">
+                <CardContent className="text-center flex flex-col justify-between p-6 h-full min-h-[280px]">
+                  <ul className="space-y-2 mb-6">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="text-sm text-gray-500 flex items-center justify-center">
                         <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
@@ -72,7 +72,7 @@ const Services = () => {
                   <Button 
                     onClick={scrollToForm}
                     variant="outline" 
-                    className="w-full mt-auto"
+                    className="w-full"
                   >
                     Get Quote
                   </Button>

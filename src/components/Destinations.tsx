@@ -124,7 +124,7 @@ const Destinations = () => {
         <img
           src={destination.image}
           alt={`Beautiful view of ${destination.name}`}
-          className="w-full h-64 object-cover"
+          className="w-full h-80 object-cover"
         />
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center">
           <Star className="text-yellow-500 fill-current mr-1" size={16} />
@@ -208,7 +208,7 @@ const Destinations = () => {
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {domesticDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-3/5">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-2/5">
                     <DestinationCard destination={destination} />
                   </CarouselItem>
                 ))}
@@ -228,7 +228,7 @@ const Destinations = () => {
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {internationalDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-3/5">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-2/5">
                     <DestinationCard destination={destination} />
                   </CarouselItem>
                 ))}

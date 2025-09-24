@@ -46,84 +46,44 @@ const ContactForm = () => {
     return emailRegex.test(email);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validation
-    if (!formData.enquiryType || !formData.name || !formData.phone || !formData.email) {
+    // Validate required fields
+    if (!formData.name || !formData.phone || !formData.email || !formData.message) {
       toast({
-        title: "Required Fields Missing",
+        title: "Error",
         description: "Please fill in all required fields.",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
+    // Validate phone number
     if (!validatePhone(formData.phone)) {
       toast({
-        title: "Invalid Phone Number",
-        description: "Please enter a valid 10-digit Indian phone number.",
-        variant: "destructive"
+        title: "Error", 
+        description: "Please enter a valid phone number.",
+        variant: "destructive",
       });
       return;
     }
 
+    // Validate email
     if (!validateEmail(formData.email)) {
       toast({
-        title: "Invalid Email",
+        title: "Error",
         description: "Please enter a valid email address.",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
-    setIsSubmitting(true);
-
-    try {
-      // Create mailto link for basic email functionality
-      const emailBody = `New Travel Inquiry from HS Trips Website
-
-Enquiry Type: ${formData.enquiryType}
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Address: ${formData.address || 'Not provided'}
-Message: ${formData.message || 'No additional message'}
-
-Please respond to this inquiry as soon as possible.`;
-
-      const mailtoLink = `mailto:hstravels.headoffice@gmail.com?subject=Travel Inquiry from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
-      
-      // Open email client
-      window.open(mailtoLink, '_blank');
-      
-      // Simulate API call delay for user feedback
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      toast({
-        title: "Inquiry Submitted Successfully!",
-        description: "Thank you for your interest. We'll get back to you within 24 hours.",
-      });
-
-      // Reset form
-      setFormData({
-        enquiryType: '',
-        name: '',
-        phone: '',
-        email: '',
-        address: '',
-        message: ''
-      });
-
-    } catch (error) {
-      toast({
-        title: "Submission Failed",
-        description: "There was an error submitting your inquiry. Please try again or contact us directly.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Form will be submitted via formsubmit.co
+    toast({
+      title: "Success!",
+      description: "Your travel inquiry has been submitted successfully. We'll get back to you soon!",
+    });
   };
 
   return (
@@ -143,28 +103,32 @@ Please respond to this inquiry as soon as possible.`;
             <CardTitle className="text-2xl font-bold text-gray-900">Travel Inquiry Form</CardTitle>
           </CardHeader>
           <CardContent className="p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+      <form 
+        action="https://formsubmit.co/hstravels.headoffice@gmail.com" 
+        method="POST"
+        onSubmit={handleSubmit} 
+        className="space-y-6"
+      >
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="enquiryType" className="text-base font-medium">
                     Enquiry Type *
                   </Label>
-                  <Select 
+                  <select 
+                    name="enquiryType"
                     value={formData.enquiryType} 
-                    onValueChange={(value) => handleInputChange('enquiryType', value)}
+                    onChange={(e) => handleInputChange('enquiryType', e.target.value)}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    required
                   >
-                    <SelectTrigger className="mt-2">
-                      <SelectValue placeholder="Select enquiry type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="flight">Flight Booking</SelectItem>
-                      <SelectItem value="hotels">Hotel Booking</SelectItem>
-                      <SelectItem value="group-family">Group/Family Booking</SelectItem>
-                      <SelectItem value="holiday-packages">Holiday Packages</SelectItem>
-                      <SelectItem value="corporate">Corporate Travel Services</SelectItem>
-                      <SelectItem value="other">Other/General Query</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    <option value="">Select enquiry type</option>
+                    <option value="flight">Flight Booking</option>
+                    <option value="hotels">Hotel Booking</option>
+                    <option value="group-family">Group/Family Booking</option>
+                    <option value="holiday-packages">Holiday Packages</option>
+                    <option value="corporate">Corporate Travel Services</option>
+                    <option value="other">Other/General Query</option>
+                  </select>
                 </div>
 
                 <div>
@@ -173,6 +137,7 @@ Please respond to this inquiry as soon as possible.`;
                   </Label>
                   <Input
                     id="name"
+                    name="name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
@@ -192,6 +157,7 @@ Please respond to this inquiry as soon as possible.`;
                     <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="phone"
+                      name="phone"
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
@@ -210,6 +176,7 @@ Please respond to this inquiry as soon as possible.`;
                     <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
@@ -227,6 +194,7 @@ Please respond to this inquiry as soon as possible.`;
                 </Label>
                 <Input
                   id="address"
+                  name="address"
                   type="text"
                   value={formData.address}
                   onChange={(e) => handleInputChange('address', e.target.value)}
@@ -241,6 +209,7 @@ Please respond to this inquiry as soon as possible.`;
                 </Label>
                 <Textarea
                   id="message"
+                  name="message"
                   value={formData.message}
                   onChange={(e) => handleInputChange('message', e.target.value)}
                   placeholder="Tell us about your travel preferences, dates, budget, or any special requirements..."

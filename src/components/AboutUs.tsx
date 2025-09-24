@@ -32,11 +32,11 @@ const AboutUs = () => {
 
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">500+</div>
+                <div className="text-3xl font-bold text-primary mb-1">1000+</div>
                 <div className="text-gray-600 text-sm">Happy Travelers</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">50+</div>
+                <div className="text-3xl font-bold text-primary mb-1">100+</div>
                 <div className="text-gray-600 text-sm">Destinations Covered</div>
               </div>
               <div className="text-center">
