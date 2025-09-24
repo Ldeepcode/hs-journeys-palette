@@ -64,7 +64,7 @@ const domesticDestinations = [
 const internationalDestinations = [
   {
     name: "Dubai, UAE",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     description: "Modern city of skyscrapers, luxury shopping, and desert adventures.",
     highlights: ["Burj Khalifa", "Desert Safari", "Luxury Shopping", "Modern Architecture"],
     rating: 4.7,
@@ -72,7 +72,7 @@ const internationalDestinations = [
   },
   {
     name: "Singapore",
-    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     description: "Garden City with incredible attractions, diverse culture, and amazing food.",
     highlights: ["Gardens by Bay", "Universal Studios", "Marina Bay", "Street Food"],
     rating: 4.8,
@@ -80,7 +80,7 @@ const internationalDestinations = [
   },
   {
     name: "Bangkok, Thailand",
-    image: "https://images.unsplash.com/photo-1563492065326-1e2834e30979?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     description: "Vibrant city with ornate temples, floating markets, and incredible street food.",
     highlights: ["Grand Palace", "Floating Markets", "Street Food", "Thai Massage"],
     rating: 4.6,
@@ -88,7 +88,7 @@ const internationalDestinations = [
   },
   {
     name: "Bali, Indonesia",
-    image: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     description: "Island paradise with beautiful beaches, rice terraces, and spiritual temples.",
     highlights: ["Beach Resorts", "Rice Terraces", "Hindu Temples", "Volcano Views"],
     rating: 4.9,
@@ -96,7 +96,7 @@ const internationalDestinations = [
   },
   {
     name: "Maldives",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     description: "Tropical paradise with overwater villas, crystal clear waters, and coral reefs.",
     highlights: ["Overwater Villas", "Coral Reefs", "Water Sports", "Luxury Resorts"],
     rating: 4.9,
@@ -104,7 +104,7 @@ const internationalDestinations = [
   },
   {
     name: "Paris, France",
-    image: "https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1431274172761-fca41d930114?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     description: "City of Love with iconic landmarks, world-class museums, and romantic atmosphere.",
     highlights: ["Eiffel Tower", "Louvre Museum", "Seine River", "French Cuisine"],
     rating: 4.8,
@@ -141,10 +141,6 @@ const Destinations = () => {
           <MapPin className="text-primary mr-2 flex-shrink-0" size={18} />
           <h3 className="text-xl font-bold text-gray-900 truncate">{destination.name}</h3>
         </div>
-        
-        <p className="text-gray-600 mb-4 leading-relaxed">
-          {destination.description}
-        </p>
         
         <div className="mb-6">
           <h4 className="text-sm font-semibold text-gray-800 mb-2">Highlights:</h4>
@@ -204,17 +200,17 @@ const Destinations = () => {
                 align: "start",
                 loop: true,
               }}
-              className="w-full"
+              className="w-full max-w-sm md:max-w-4xl lg:max-w-5xl mx-auto"
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {domesticDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-2/5">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2">
                     <DestinationCard destination={destination} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden md:flex" />
-              <CarouselNext className="hidden md:flex" />
+              <CarouselPrevious />
+              <CarouselNext />
             </Carousel>
           </TabsContent>
           
@@ -224,17 +220,17 @@ const Destinations = () => {
                 align: "start",
                 loop: true,
               }}
-              className="w-full"
+              className="w-full max-w-sm md:max-w-4xl lg:max-w-5xl mx-auto"
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {internationalDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-2/5">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2">
                     <DestinationCard destination={destination} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden md:flex" />
-              <CarouselNext className="hidden md:flex" />
+              <CarouselPrevious />
+              <CarouselNext />
             </Carousel>
           </TabsContent>
         </Tabs>

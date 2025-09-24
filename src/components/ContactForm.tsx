@@ -46,14 +46,14 @@ const ContactForm = () => {
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate required fields
-    if (!formData.name || !formData.phone || !formData.email || !formData.message) {
+    // Validate required fields (only Name, Email, Phone)
+    if (!formData.name || !formData.phone || !formData.email) {
       toast({
         title: "Error",
-        description: "Please fill in all required fields.",
+        description: "Please fill in Name, Email, and Phone Number.",
         variant: "destructive",
       });
       return;
@@ -79,11 +79,69 @@ const ContactForm = () => {
       return;
     }
 
-    // Form will be submitted via formsubmit.co
+    // Submit form data to FormSubmit
+    setIsSubmitting(true);
+    
+    // Show success toast immediately (optimistic UI)
     toast({
       title: "Success!",
       description: "Your travel inquiry has been submitted successfully. We'll get back to you soon!",
     });
+    
+    // Submit to FormSubmit in background using iframe
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'formsubmit-frame';
+    document.body.appendChild(iframe);
+    
+    const tempForm = document.createElement('form');
+    tempForm.action = 'https://formsubmit.co/hstravels.headoffice@gmail.com';
+    tempForm.method = 'POST';
+    tempForm.target = 'formsubmit-frame';
+    tempForm.style.display = 'none';
+    
+    // Add all form fields
+    const fields = [
+      { name: 'enquiryType', value: formData.enquiryType },
+      { name: 'name', value: formData.name },
+      { name: 'phone', value: formData.phone },
+      { name: 'email', value: formData.email },
+      { name: 'address', value: formData.address },
+      { name: 'message', value: formData.message },
+      { name: '_subject', value: 'New Travel Inquiry from HS Trips Website' },
+      { name: '_captcha', value: 'false' },
+      { name: '_template', value: 'table' },
+      { name: '_cc', value: 'harpreetsingh9082s@gmail.com' }
+    ];
+    
+    fields.forEach(field => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = field.name;
+      input.value = field.value;
+      tempForm.appendChild(input);
+    });
+    
+    document.body.appendChild(tempForm);
+    tempForm.submit();
+    
+    // Clean up after a delay
+    setTimeout(() => {
+      document.body.removeChild(tempForm);
+      document.body.removeChild(iframe);
+    }, 2000);
+    
+    // Reset form
+    setFormData({
+      enquiryType: '',
+      name: '',
+      phone: '',
+      email: '',
+      address: '',
+      message: ''
+    });
+    
+    setIsSubmitting(false);
   };
 
   return (
@@ -103,23 +161,20 @@ const ContactForm = () => {
             <CardTitle className="text-2xl font-bold text-gray-900">Travel Inquiry Form</CardTitle>
           </CardHeader>
           <CardContent className="p-8">
-      <form 
-        action="https://formsubmit.co/hstravels.headoffice@gmail.com" 
-        method="POST"
-        onSubmit={handleSubmit} 
-        className="space-y-6"
-      >
+            <form 
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+            >
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="enquiryType" className="text-base font-medium">
-                    Enquiry Type *
+                    Enquiry Type (Optional)
                   </Label>
                   <select 
                     name="enquiryType"
                     value={formData.enquiryType} 
                     onChange={(e) => handleInputChange('enquiryType', e.target.value)}
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    required
                   >
                     <option value="">Select enquiry type</option>
                     <option value="flight">Flight Booking</option>
@@ -217,6 +272,13 @@ const ContactForm = () => {
                   className="mt-2"
                 />
               </div>
+
+              {/* FormSubmit Configuration */}
+              <input type="hidden" name="_subject" value="New Travel Inquiry from HS Trips Website" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_cc" value="harpreetsingh9082s@gmail.com,Lakhdeep1874@gmail.com" />
+              <input type="hidden" name="_next" value="https://your-website.com/thank-you" />
 
               <Button 
                 type="submit" 

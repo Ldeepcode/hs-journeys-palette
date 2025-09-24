@@ -7,42 +7,42 @@ const testimonials = [
   {
     name: "Priya Sharma",
     location: "Mumbai",
-    avatar: "/placeholder.svg",
+    avatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     rating: 5,
     review: "HsTrips planned the most amazing Kashmir trip for our family. The houseboat experience was magical, and their attention to detail was incredible. Highly recommended!"
   },
   {
     name: "Rajesh Kumar", 
     location: "Delhi",
-    avatar: "/placeholder.svg",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     rating: 5,
     review: "Our Leh Ladakh adventure was perfectly organized. From permits to accommodations, everything was seamless. The team's local knowledge made all the difference."
   },
   {
     name: "Anjali Patel",
     location: "Ahmedabad", 
-    avatar: "/placeholder.svg",
+    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     rating: 5,
     review: "Transparent pricing and excellent service! Our Kerala backwaters honeymoon was dreamy. HsTrips exceeded our expectations in every way."
   },
   {
     name: "Vikram Singh",
     location: "Jaipur",
-    avatar: "/placeholder.svg", 
+    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face&auto=format&q=80", 
     rating: 4,
     review: "Great experience with HsTrips for our Manali winter trip. The package included everything we needed, and their 24/7 support was really helpful."
   },
   {
     name: "Meera Iyer",
     location: "Bangalore",
-    avatar: "/placeholder.svg",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     rating: 5,
     review: "Udaipur palace tour was spectacular! HsTrips' customized itinerary covered all the must-see places. Professional service from start to finish."
   },
   {
     name: "Arjun Mehta",
     location: "Pune",
-    avatar: "/placeholder.svg",
+    avatar: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     rating: 5,
     review: "Booked our Rajasthan family vacation through HsTrips. Their end-to-end service and local insights made our trip unforgettable. Worth every penny!"
   }
