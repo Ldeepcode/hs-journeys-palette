@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {Plane, Hotel, Package, Users } from "lucide-react";
+import { trackServiceClick, trackCTAClick } from "@/analytics";
 
 const services = [
   {
@@ -35,8 +36,14 @@ const Services = () => {
     formElement?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleServiceClick = (serviceName: string) => {
+    trackServiceClick(serviceName);
+    trackCTAClick('Get Quote', `services_${serviceName.toLowerCase().replace(/\s+/g, '_')}`);
+    scrollToForm();
+  };
+
   return (
-    <section className="pt-20 pb-2 px-4 bg-gradient-to-b from-white to-gray-50 w-full overflow-x-hidden">
+    <section className="pt-20 pb-2 px-4 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -70,7 +77,7 @@ const Services = () => {
                     ))}
                   </ul>
                   <Button 
-                    onClick={scrollToForm}
+                    onClick={() => handleServiceClick(service.title)}
                     variant="outline" 
                     className="w-full hover:bg-primary hover:text-white transition-colors"
                   >

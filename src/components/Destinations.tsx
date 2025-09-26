@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Star, MapPin } from "lucide-react";
+import { trackDestinationClick, trackCTAClick } from "@/analytics";
 import manaliHero from "@/assets/manali-hero.jpg";
 import lehLadakhHero from "@/assets/leh-ladakh-hero.jpg";
 import kashmirHero from "@/assets/kashmir-hero.jpg";
@@ -118,7 +119,13 @@ const Destinations = () => {
     formElement?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const DestinationCard = ({ destination }: { destination: typeof domesticDestinations[0] }) => (
+  const handleDestinationClick = (destinationName: string, category: 'domestic' | 'international', action: string) => {
+    trackDestinationClick(destinationName, category);
+    trackCTAClick(action, `destination_card_${destinationName.toLowerCase().replace(/[^a-z0-9]/g, '_')}`);
+    scrollToForm();
+  };
+
+  const DestinationCard = ({ destination, category }: { destination: typeof domesticDestinations[0], category: 'domestic' | 'international' }) => (
     <Card className="w-full h-full hover:shadow-brand transition-all duration-300 hover:-translate-y-2 bg-white/90 backdrop-blur-sm border-primary/10 overflow-hidden">
       <div className="relative">
         <img
@@ -158,14 +165,14 @@ const Destinations = () => {
         
         <div className="flex flex-col space-y-3">
           <Button 
-            onClick={scrollToForm}
+            onClick={() => handleDestinationClick(destination.name, category, 'Plan Trip')}
             variant="cta" 
             className="w-full"
           >
             Plan Trip
           </Button>
           <Button 
-            onClick={scrollToForm}
+            onClick={() => handleDestinationClick(destination.name, category, 'Learn More')}
             variant="outline" 
             className="w-full"
           >
@@ -177,7 +184,7 @@ const Destinations = () => {
   );
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white w-full overflow-x-hidden">
+    <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -200,12 +207,12 @@ const Destinations = () => {
                 align: "start",
                 loop: true,
               }}
-              className="w-full max-w-full mx-auto"
+              className="w-full max-w-sm md:max-w-4xl lg:max-w-5xl mx-auto"
             >
-              <CarouselContent className="-ml-2 md:-ml-4 max-w-full">
+              <CarouselContent className="-ml-2 md:-ml-4">
                 {domesticDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 max-w-full">
-                    <DestinationCard destination={destination} />
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2">
+                    <DestinationCard destination={destination} category="domestic" />
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -220,12 +227,12 @@ const Destinations = () => {
                 align: "start",
                 loop: true,
               }}
-              className="w-full max-w-full mx-auto"
+              className="w-full max-w-sm md:max-w-4xl lg:max-w-5xl mx-auto"
             >
-              <CarouselContent className="-ml-2 md:-ml-4 max-w-full">
+              <CarouselContent className="-ml-2 md:-ml-4">
                 {internationalDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 max-w-full">
-                    <DestinationCard destination={destination} />
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2">
+                    <DestinationCard destination={destination} category="international" />
                   </CarouselItem>
                 ))}
               </CarouselContent>

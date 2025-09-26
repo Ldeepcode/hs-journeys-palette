@@ -1,9 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Instagram, Facebook, MessageSquare, Phone, Mail, MapPin } from "lucide-react";
+import { trackSocialClick, trackWhatsAppClick, trackEmailClick } from "@/analytics";
 
 const Footer = () => {
+  const handleSocialClick = (platform: string) => {
+    trackSocialClick(platform, 'footer');
+  };
+
+  const handleWhatsAppClick = () => {
+    trackWhatsAppClick('footer');
+  };
+
+  const handleEmailClick = () => {
+    trackEmailClick('footer');
+  };
+
   return (
-    <footer className="bg-gray-900 text-white py-16 px-4 w-full overflow-x-hidden">
+    <footer className="bg-gray-900 text-white py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Brand Section */}
@@ -28,6 +41,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Instagram"
+                  onClick={() => handleSocialClick('instagram')}
                 >
                   <Instagram size={20} />
                 </a>
@@ -44,6 +58,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Chat with us on WhatsApp"
+                  onClick={handleWhatsAppClick}
                 >
                   <MessageSquare size={20} />
                 </a>
@@ -60,6 +75,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Facebook"
+                  onClick={() => handleSocialClick('facebook')}
                 >
                   <Facebook size={20} />
                 </a>
@@ -74,11 +90,12 @@ const Footer = () => {
               <div className="flex items-center">
                 <Mail size={16} className="mr-3 text-primary flex-shrink-0" />
                 <a 
-                  href="mailto:support@hstrips.com" 
+                  href="mailto:hstravels.headoffice@gmail.com" 
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  onClick={handleEmailClick}
                 >
-                  support@hstrips.com
-                </a>
+                  hstravels.headoffice@gmail.com
+                </a> 
               </div>
               
               <div className="flex items-center">
@@ -88,6 +105,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  onClick={handleWhatsAppClick}
                 >
                   WhatsApp Support
                 </a>

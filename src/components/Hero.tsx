@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { trackCTAClick, trackDestinationClick } from "@/analytics";
 import manaliHero from "@/assets/manali-hero.jpg";
 import lehLadakhHero from "@/assets/leh-ladakh-hero.jpg";
 import kashmirHero from "@/assets/kashmir-hero.jpg";
@@ -33,8 +34,19 @@ const Hero = () => {
     formElement?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleHeroCTAClick = () => {
+    trackCTAClick("Let's Plan Your Trip", 'hero_section');
+    scrollToForm();
+  };
+
+  const handleDestinationIndicatorClick = (index: number) => {
+    const destinationName = destinations[index].name;
+    trackDestinationClick(destinationName, 'domestic');
+    setCurrentDestination(index);
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Images */}
       {destinations.map((destination, index) => (
         <div
@@ -75,7 +87,7 @@ const Hero = () => {
         </div>
 
         <Button 
-          onClick={scrollToForm}
+          onClick={handleHeroCTAClick}
           variant="hero" 
           size="xl"
           className="mb-8"
@@ -88,7 +100,7 @@ const Hero = () => {
           {destinations.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentDestination(index)}
+              onClick={() => handleDestinationIndicatorClick(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentDestination ? 'bg-white' : 'bg-white/50 hover:bg-white/75'
               }`}
