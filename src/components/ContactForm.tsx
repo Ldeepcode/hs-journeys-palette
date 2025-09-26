@@ -167,7 +167,7 @@ const ContactForm = () => {
             >
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="enquiryType" className="text-base font-medium">
+                  <Label htmlFor="enquiryType" className="text-base font-medium mb-2 block">
                     Enquiry Type (Optional)
                   </Label>
                   <select 
@@ -187,7 +187,7 @@ const ContactForm = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="name" className="text-base font-medium">
+                  <Label htmlFor="name" className="text-base font-medium mb-2 block">
                     Full Name *
                   </Label>
                   <Input
@@ -197,7 +197,6 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     placeholder="Enter your full name"
-                    className="mt-2"
                     required
                   />
                 </div>
@@ -205,10 +204,10 @@ const ContactForm = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="phone" className="text-base font-medium">
+                  <Label htmlFor="phone" className="text-base font-medium mb-2 block">
                     Phone Number *
                   </Label>
-                  <div className="relative mt-2">
+                  <div className="relative">
                     <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="phone"
@@ -224,10 +223,10 @@ const ContactForm = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-base font-medium">
+                  <Label htmlFor="email" className="text-base font-medium mb-2 block">
                     Email Address *
                   </Label>
-                  <div className="relative mt-2">
+                  <div className="relative">
                     <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="email"
@@ -244,7 +243,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <Label htmlFor="address" className="text-base font-medium">
+                <Label htmlFor="address" className="text-base font-medium mb-2 block">
                   Address (Optional)
                 </Label>
                 <Input
@@ -254,12 +253,11 @@ const ContactForm = () => {
                   value={formData.address}
                   onChange={(e) => handleInputChange('address', e.target.value)}
                   placeholder="City, State"
-                  className="mt-2"
                 />
               </div>
 
               <div>
-                <Label htmlFor="message" className="text-base font-medium">
+                <Label htmlFor="message" className="text-base font-medium mb-2 block">
                   Additional Message (Optional)
                 </Label>
                 <Textarea
@@ -269,7 +267,6 @@ const ContactForm = () => {
                   onChange={(e) => handleInputChange('message', e.target.value)}
                   placeholder="Tell us about your travel preferences, dates, budget, or any special requirements..."
                   rows={4}
-                  className="mt-2"
                 />
               </div>
 
