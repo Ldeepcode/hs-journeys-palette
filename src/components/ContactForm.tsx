@@ -95,7 +95,7 @@ const ContactForm = () => {
     document.body.appendChild(iframe);
     
     const tempForm = document.createElement('form');
-    tempForm.action = 'https://formsubmit.co/hstravels.headoffice@gmail.com';
+    tempForm.action = 'https://formsubmit.co/support@hstrips.com';
     tempForm.method = 'POST';
     tempForm.target = 'formsubmit-frame';
     tempForm.style.display = 'none';
@@ -111,7 +111,7 @@ const ContactForm = () => {
       { name: '_subject', value: 'New Travel Inquiry from HS Trips Website' },
       { name: '_captcha', value: 'false' },
       { name: '_template', value: 'table' },
-      { name: '_cc', value: 'harpreetsingh9082s@gmail.com' }
+      { name: '_cc', value: 'hstravels.headoffice@gmail.com,harpreetsingh9082s@gmail.com,Lakhdeep1874@gmail.com' }
     ];
     
     fields.forEach(field => {
@@ -277,7 +277,7 @@ const ContactForm = () => {
               <input type="hidden" name="_subject" value="New Travel Inquiry from HS Trips Website" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_cc" value="harpreetsingh9082s@gmail.com,Lakhdeep1874@gmail.com" />
+              <input type="hidden" name="_cc" value="hstravels.headoffice@gmail.com,harpreetsingh9082s@gmail.com,Lakhdeep1874@gmail.com" />
               <input type="hidden" name="_next" value="https://your-website.com/thank-you" />
 
               <Button 
