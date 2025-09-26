@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Phone, Mail } from "lucide-react";
+import { trackContactFormSubmission, trackError } from "@/analytics";
 
 interface FormData {
   enquiryType: string;
@@ -51,36 +52,50 @@ const ContactForm = () => {
     
     // Validate required fields (only Name, Email, Phone)
     if (!formData.name || !formData.phone || !formData.email) {
+      const errorMsg = "Please fill in Name, Email, and Phone Number.";
       toast({
         title: "Error",
-        description: "Please fill in Name, Email, and Phone Number.",
+        description: errorMsg,
         variant: "destructive",
       });
+      trackError(errorMsg, 'contact_form_validation');
       return;
     }
 
     // Validate phone number
     if (!validatePhone(formData.phone)) {
+      const errorMsg = "Please enter a valid phone number.";
       toast({
         title: "Error", 
-        description: "Please enter a valid phone number.",
+        description: errorMsg,
         variant: "destructive",
       });
+      trackError(errorMsg, 'contact_form_phone_validation');
       return;
     }
 
     // Validate email
     if (!validateEmail(formData.email)) {
+      const errorMsg = "Please enter a valid email address.";
       toast({
         title: "Error",
-        description: "Please enter a valid email address.",
+        description: errorMsg,
         variant: "destructive",
       });
+      trackError(errorMsg, 'contact_form_email_validation');
       return;
     }
 
     // Submit form data to FormSubmit
     setIsSubmitting(true);
+    
+    // Track form submission analytics
+    trackContactFormSubmission({
+      enquiryType: formData.enquiryType,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+    });
     
     // Show success toast immediately (optimistic UI)
     toast({
@@ -95,7 +110,7 @@ const ContactForm = () => {
     document.body.appendChild(iframe);
     
     const tempForm = document.createElement('form');
-    tempForm.action = 'https://formsubmit.co/support@hstrips.com';
+    tempForm.action = 'https://formsubmit.co/hstravels.headoffice@gmail.com';
     tempForm.method = 'POST';
     tempForm.target = 'formsubmit-frame';
     tempForm.style.display = 'none';
@@ -111,7 +126,7 @@ const ContactForm = () => {
       { name: '_subject', value: 'New Travel Inquiry from HS Trips Website' },
       { name: '_captcha', value: 'false' },
       { name: '_template', value: 'table' },
-      { name: '_cc', value: 'hstravels.headoffice@gmail.com,harpreetsingh9082s@gmail.com,Lakhdeep1874@gmail.com' }
+      { name: '_cc', value: 'harpreetsingh9082s@gmail.com' }
     ];
     
     fields.forEach(field => {
@@ -145,7 +160,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact-form" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white w-full overflow-x-hidden">
+    <section id="contact-form" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -167,7 +182,7 @@ const ContactForm = () => {
             >
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="enquiryType" className="text-base font-medium mb-2 block">
+                  <Label htmlFor="enquiryType" className="text-base font-medium">
                     Enquiry Type (Optional)
                   </Label>
                   <select 
@@ -187,7 +202,7 @@ const ContactForm = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="name" className="text-base font-medium mb-2 block">
+                  <Label htmlFor="name" className="text-base font-medium">
                     Full Name *
                   </Label>
                   <Input
@@ -197,6 +212,7 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     placeholder="Enter your full name"
+                    className="mt-2"
                     required
                   />
                 </div>
@@ -204,10 +220,10 @@ const ContactForm = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="phone" className="text-base font-medium mb-2 block">
+                  <Label htmlFor="phone" className="text-base font-medium">
                     Phone Number *
                   </Label>
-                  <div className="relative">
+                  <div className="relative mt-2">
                     <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="phone"
@@ -223,10 +239,10 @@ const ContactForm = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-base font-medium mb-2 block">
+                  <Label htmlFor="email" className="text-base font-medium">
                     Email Address *
                   </Label>
-                  <div className="relative">
+                  <div className="relative mt-2">
                     <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="email"
@@ -243,7 +259,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <Label htmlFor="address" className="text-base font-medium mb-2 block">
+                <Label htmlFor="address" className="text-base font-medium">
                   Address (Optional)
                 </Label>
                 <Input
@@ -253,11 +269,12 @@ const ContactForm = () => {
                   value={formData.address}
                   onChange={(e) => handleInputChange('address', e.target.value)}
                   placeholder="City, State"
+                  className="mt-2"
                 />
               </div>
 
               <div>
-                <Label htmlFor="message" className="text-base font-medium mb-2 block">
+                <Label htmlFor="message" className="text-base font-medium">
                   Additional Message (Optional)
                 </Label>
                 <Textarea
@@ -267,6 +284,7 @@ const ContactForm = () => {
                   onChange={(e) => handleInputChange('message', e.target.value)}
                   placeholder="Tell us about your travel preferences, dates, budget, or any special requirements..."
                   rows={4}
+                  className="mt-2"
                 />
               </div>
 
@@ -274,7 +292,7 @@ const ContactForm = () => {
               <input type="hidden" name="_subject" value="New Travel Inquiry from HS Trips Website" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_cc" value="hstravels.headoffice@gmail.com,harpreetsingh9082s@gmail.com,Lakhdeep1874@gmail.com" />
+              <input type="hidden" name="_cc" value="harpreetsingh9082s@gmail.com,Lakhdeep1874@gmail.com" />
               <input type="hidden" name="_next" value="https://your-website.com/thank-you" />
 
               <Button 
