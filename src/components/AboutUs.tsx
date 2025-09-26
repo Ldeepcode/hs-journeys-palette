@@ -9,7 +9,7 @@ const AboutUs = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-white w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}

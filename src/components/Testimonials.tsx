@@ -65,7 +65,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 px-4 bg-gradient-to-b from-white to-gray-50 w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

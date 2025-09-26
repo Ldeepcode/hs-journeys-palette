@@ -145,7 +145,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact-form" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
+    <section id="contact-form" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white w-full overflow-x-hidden">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

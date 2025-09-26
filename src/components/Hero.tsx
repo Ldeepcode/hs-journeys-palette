@@ -34,7 +34,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
       {/* Background Images */}
       {destinations.map((destination, index) => (
         <div

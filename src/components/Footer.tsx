@@ -3,7 +3,7 @@ import { Instagram, Facebook, MessageSquare, Phone, Mail, MapPin } from "lucide-
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-16 px-4">
+    <footer className="bg-gray-900 text-white py-16 px-4 w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Brand Section */}

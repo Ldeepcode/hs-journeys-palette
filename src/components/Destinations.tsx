@@ -177,7 +177,7 @@ const Destinations = () => {
   );
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -200,11 +200,11 @@ const Destinations = () => {
                 align: "start",
                 loop: true,
               }}
-              className="w-full max-w-sm md:max-w-4xl lg:max-w-5xl mx-auto"
+              className="w-full max-w-full mx-auto"
             >
-              <CarouselContent className="-ml-2 md:-ml-4">
+              <CarouselContent className="-ml-2 md:-ml-4 max-w-full">
                 {domesticDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 max-w-full">
                     <DestinationCard destination={destination} />
                   </CarouselItem>
                 ))}
@@ -220,11 +220,11 @@ const Destinations = () => {
                 align: "start",
                 loop: true,
               }}
-              className="w-full max-w-sm md:max-w-4xl lg:max-w-5xl mx-auto"
+              className="w-full max-w-full mx-auto"
             >
-              <CarouselContent className="-ml-2 md:-ml-4">
+              <CarouselContent className="-ml-2 md:-ml-4 max-w-full">
                 {internationalDestinations.map((destination, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 max-w-full">
                     <DestinationCard destination={destination} />
                   </CarouselItem>
                 ))}
