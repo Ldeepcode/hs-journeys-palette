@@ -94,7 +94,7 @@ const Footer = () => {
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                   onClick={handleEmailClick}
                 >
-                  hstravels.headoffice@gmail.com
+                  support@hstrips.com
                 </a> 
               </div>
               
